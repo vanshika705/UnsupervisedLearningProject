@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="./static/style.css" />
+        <title>AI Farmer Assitance Model</title>
+    </head>
+    <body>
+        <div id="project_form">
+        <h2 style="text-align:center">AI Farmer Assitance Model</h2>
+        <hr>
+            <div class="container">
+        <form action="{{ url_for('predict') }}" method="post">
+            <label for="">Nitrogen:</label>
+            <input type="text" placeholder="Enter Nitrogen Level :" name="nitrogen"></input>
+            <br><br>
+
+            <label for="">Phosphorus:</label>
+            <input type="text" placeholder="Enter Phosphorus Level :" name="phosphorus"></input>  
+            <br><br>
+
+            <label for="">Potassium:</label>
+            <input type="text" placeholder="Enter Potassium Level :" name="potassium"></input>   
+            <br><br>
+
+            <label for="">Temperature:</label>
+            <input type="text" placeholder="Enter Temperature :" name="temperature"></input>   
+            <br><br>
+
+            <label for="">Humidity:</label>
+            <input type="text" placeholder="Enter Humidity :" name="humidity"></input>    
+            <br><br>
+
+            <label for="">pH:</label>
+            <input type="text" placeholder="Enter pH Level :" name="ph"></input>  
+            <br><br>
+
+            <label for="">Rainfall:</label>
+            <input type="text" placeholder="Enter Rainfall :" name="rainfall"></input>  
+            <br><br>
+            
+            <button type="submit">Submit</button>
+        </div>
+        </form>
+    </div>
+    </body>
+</html>
+<!-- N	P	K	temperature	humidity	ph	rainfall	cluster	label -->

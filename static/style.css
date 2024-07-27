@@ -1,0 +1,34 @@
+body{
+    background: linear-gradient(to right, rgb(0, 64, 128), rgb(120, 231, 137));
+
+    
+}
+#heading{
+    text-align: center;
+}
+button{
+    background-color:antiquewhite;
+    color:black;
+    border-color:rgb(164, 221, 22) ;
+    border-width: 0.2rem;
+}
+p{
+    font-size: 1.2rem;
+}
+#project_form{
+    font-size: 1.2rem;
+}
+form{
+    box-shadow: 4px 4px 10px rgb(32, 49, 54);
+    width: 370px;
+    height: 390px;
+    padding-left: 13px;
+    padding-top: 15px;
+   
+}
+.container{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 90px;
+}
