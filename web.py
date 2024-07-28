@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, url_for
 
 import joblib
-
-model = joblib.load("./models/standard_scaler")
+import pandas as pd
 
 app = Flask(__name__)
+
+std = joblib.load('./models/standard_scaler')
+model = joblib.load('./models/kmeans_model')
 
 @app.route("/")
 def home():
@@ -17,20 +19,63 @@ def project():
 @app.route("/predict",methods=["GET","POST"])
 def predict():
     if request.method == "POST":
-        # to recieve the data 
+        # Parse input values from the form
         nitrogen = int(request.form["nitrogen"])
         phosphorus = int(request.form["phosphorus"])
         potassium = int(request.form["potassium"]) 
-        temperature = (request.form["temperature"] )
-        humidity = (request.form["humidity"]) 
-        ph = (request.form["ph"]) 
-        rainfall = (request.form["rainfall"]) 
+        temperature = float(request.form["temperature"] )
+        humidity = float(request.form["humidity"]) 
+        ph = float(request.form["ph"]) 
+        rainfall = float(request.form["rainfall"]) 
         
-    unseen_data = [[nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall]]
-    prediction = str(model(unseen_data)[0])
-   
-    return render_template("final.html", output = prediction)
-    
+        # Prepare the data for prediction
+        unseen_data = [[nitrogen, phosphorus, potassium, temperature, humidity, ph, rainfall]]
+        converted_data = std.transform(unseen_data)
+        
+        # Make prediction using the loaded model
+        prediction = model.predict(converted_data)[0]
+        
+        df = pd.read_csv(r"C:\Users\hp\Desktop\crop project\models\add_data.csv")
+        if prediction == 0:
+            cluster = df[df["cluster"] == 0]
+            ls = list(cluster["label"].value_counts().key())
+            return render_template("cluster_0.html")
+        
+        elif prediction==1:
+            cluster=df[df['cluster']==1]
+            ls=list(cluster['label'].value_counts().keys())
+            return render_template('cluster_1.html')
+        
+        elif prediction==2:
+            cluster=df[df['cluster']==2]
+            ls=list(cluster['label'].value_counts().keys())
+            return render_template('cluster_2.html')
+        
+        elif prediction==3:
+            cluster=df[df['cluster']==3]
+            ls=list(cluster['label'].value_counts().keys())
+            return render_template('cluster_3.html')
+        
+        elif prediction==4:
+            cluster=df[df['cluster']==4]
+            ls=list(cluster['label'].value_counts().keys())
+            return render_template('cluster_4.html')
+        
+        elif prediction==5:
+            cluster=df[df['cluster']==5]
+            ls=list(cluster['label'].value_counts().keys())
+            return render_template('cluster_5.html')
+        
+        elif prediction==6:
+            cluster=df[df['cluster']==6]
+            ls=list(cluster['label'].value_counts().keys())
+            return render_template('cluster_6.html')
+        
+        elif prediction==7:
+            cluster=df[df['cluster']==7]
+            ls=list(cluster['label'].value_counts().keys())
+            return render_template('cluster_7.html')
+            
 if __name__ == "__main__":
     app.run(debug=True)
     

@@ -10,31 +10,31 @@
             <div class="container">
         <form action="{{ url_for('predict') }}" method="post">
             <label for="">Nitrogen:</label>
-            <input type="text" placeholder="Enter Nitrogen Level :" name="nitrogen"></input>
+            <input type="number" placeholder="Enter Nitrogen Level :" name="nitrogen"></input>
             <br><br>
 
             <label for="">Phosphorus:</label>
-            <input type="text" placeholder="Enter Phosphorus Level :" name="phosphorus"></input>  
+            <input type="number" placeholder="Enter Phosphorus Level :" name="phosphorus"></input>  
             <br><br>
 
             <label for="">Potassium:</label>
-            <input type="text" placeholder="Enter Potassium Level :" name="potassium"></input>   
+            <input type="number" placeholder="Enter Potassium Level :" name="potassium"></input>   
             <br><br>
 
             <label for="">Temperature:</label>
-            <input type="text" placeholder="Enter Temperature :" name="temperature"></input>   
+            <input type="number" step="0.1" placeholder="Enter Temperature :" name="temperature"></input>   
             <br><br>
 
             <label for="">Humidity:</label>
-            <input type="text" placeholder="Enter Humidity :" name="humidity"></input>    
+            <input type="number" step="0.1" placeholder="Enter Humidity :" name="humidity"></input>    
             <br><br>
 
             <label for="">pH:</label>
-            <input type="text" placeholder="Enter pH Level :" name="ph"></input>  
+            <input type="number" step="0.1" placeholder="Enter pH Level :" name="ph"></input>  
             <br><br>
 
             <label for="">Rainfall:</label>
-            <input type="text" placeholder="Enter Rainfall :" name="rainfall"></input>  
+            <input type="number" step="0.1" placeholder="Enter Rainfall :" name="rainfall"></input>  
             <br><br>
             
             <button type="submit">Submit</button>
